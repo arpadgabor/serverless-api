@@ -1,0 +1,15 @@
+{
+  "name": "esbuild-testing-zone",
+  "version": "1.0.0",
+  "description": "Packaged externals for esbuild-testing-zone",
+  "private": true,
+  "dependencies": {
+    "knex": "^0.95.4",
+    "mysql": "",
+    "mysql2": "",
+    "pg": "^8.6.0",
+    "pg-native": "",
+    "sqlite3": "",
+    "tedious": ""
+  }
+}
