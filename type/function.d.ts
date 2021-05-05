@@ -1,4 +1,4 @@
-import type { AWS, AwsAlbListenerArn, AwsAlexaEventToken, AwsArn, AwsArnString, AwsCfFunction, AwsCfGetAtt, AwsCfImport, AwsCfInstruction, AwsCfJoin, AwsCfRef, AwsKmsArn, AwsLambdaEnvironment, AwsLambdaLayers, AwsLambdaMemorySize, AwsLambdaRole, AwsLambdaRuntime, AwsLambdaTimeout, AwsLambdaTracing, AwsLambdaVersioning, AwsLambdaVpcConfig, AwsLogGroupName, AwsResourceCondition, AwsResourceDependsOn, AwsResourceTags, EcrImageUri, FunctionName,  } from '@serverless/typescript'
+import type { AwsAlbListenerArn, AwsAlexaEventToken, AwsArn, AwsArnString, AwsCfFunction, AwsCfGetAtt, AwsCfImport, AwsCfInstruction, AwsCfJoin, AwsCfRef, AwsKmsArn, AwsLambdaEnvironment, AwsLambdaLayers, AwsLambdaMemorySize, AwsLambdaRole, AwsLambdaRuntime, AwsLambdaTimeout, AwsLambdaTracing, AwsLambdaVersioning, AwsLambdaVpcConfig, AwsLogGroupName, AwsResourceCondition, AwsResourceDependsOn, AwsResourceTags, EcrImageUri, FunctionName,  } from '@serverless/typescript'
 
 export interface FunctionDefinition {
   name?: string;
