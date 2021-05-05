@@ -1,5 +1,5 @@
 import { FunctionDefinition } from '@type'
-import { handlerPath } from '@libs/handlerResolver';
+import { handlerPath } from 'src/libs/handlerResolver'
 
 export default {
   handler: `${handlerPath(__dirname)}/handler.main`,
