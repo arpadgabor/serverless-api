@@ -1,3 +1,4 @@
+import { FunctionDefinition } from '@type'
 import { handlerPath } from '@libs/handlerResolver';
 
 export default {
@@ -10,4 +11,4 @@ export default {
       }
     }
   ]
-}
+} as FunctionDefinition

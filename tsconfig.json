@@ -11,7 +11,8 @@
     "baseUrl": ".",
     "paths": {
       "@functions/*": ["src/functions/*"],
-      "@libs/*": ["src/libs/*"]
+      "@libs/*": ["src/libs/*"],
+      "@type": ["type"]
     }
   },
   "include": ["src/**/*.ts", "serverless.ts"],
