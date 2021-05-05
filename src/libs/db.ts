@@ -1,4 +1,5 @@
 import Knex from "knex";
+import 'pg'
 
 const db = Knex({
   client: 'pg',

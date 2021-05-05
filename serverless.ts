@@ -12,8 +12,8 @@ const serverlessConfiguration: AWS = {
     esbuild: {
       bundle: true,
       minify: false,
+      packager: 'npm',
       external: ['knex', 'pg'],
-      packager: 'yarn'
     },
   },
 
