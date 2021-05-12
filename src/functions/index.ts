@@ -1,1 +1,5 @@
-export { cars } from './cars';
+import { users } from './users';
+
+export default {
+  ...users,
+}
