@@ -7,6 +7,8 @@ const serverlessConfiguration: AWS = {
   service: name,
   frameworkVersion: '2',
   unresolvedVariablesNotificationMode: 'error',
+  configValidationMode: 'error',
+  useDotenv: true,
 
   plugins: [
     'serverless-esbuild',
@@ -15,19 +17,21 @@ const serverlessConfiguration: AWS = {
   ],
 
   custom: {
-    certName: 'cloud.arpadgabor.com',
+    baseDomain: '${env:DOMAIN}',
+    domain: '${self:provider.stage}.${self:custom.baseDomain}', // dev.domain.com
+
     customCertificate: {
-      certificateName: '${self:custom.certName}',
-      idempotencyToken: '${self:provider.stage}__cloud_arpad_gabor',
-      hostedZoneNames: 'cloud.arpadgabor.com.',
+      certificateName: '*.${self:custom.baseDomain}', // *.domain.com
+      hostedZoneNames: '${self:custom.baseDomain}.', // domain.com.
       region: '${self:provider.region}'
     },
     
     customDomain: {
       region: '${self:provider.region}',
-      domainName: '${self:custom.certName}',
-      certificateName: '${self:custom.certName}',
+      domainName: '${self:custom.domain}',
+      certificateName: '${self:custom.customCertificate.certificateName}',
       basePath: '',
+      endpointType: 'regional',
       stage: '${self:provider.stage}',
       createRoute53Record: true,
     },
@@ -53,7 +57,6 @@ const serverlessConfiguration: AWS = {
     stage: '${opt:stage, "dev"}',
 
     stackName: '${self:service}--${self:provider.stage}',
-    deploymentBucket: '${self:service}--${self:provider.stage}',
     apiName: '${self:service}--${self:provider.stage}',
 
     apiGateway: {

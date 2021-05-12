@@ -1,5 +1,3 @@
-import 'source-map-support/register';
-
 import type { HTTPEvent } from '@libs/apiGateway';
 import { formatJSONResponse } from '@libs/apiGateway';
 import { middyfy } from '@libs/lambda';

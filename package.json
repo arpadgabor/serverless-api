@@ -1,5 +1,5 @@
 {
-  "name": "xena-api",
+  "name": "hello-serverless",
   "version": "0.0.1",
   "description": "A template for serverless APIs.",
   "main": "serverless.ts",

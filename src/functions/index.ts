@@ -1,5 +1,5 @@
-import { users } from './users';
+import { world } from './hello-world';
 
 export default {
-  ...users,
+  ...world,
 }
