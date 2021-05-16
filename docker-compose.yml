@@ -1,4 +1,4 @@
-version: 3
+version: '3'
 
 services:
   database:
@@ -6,9 +6,20 @@ services:
     restart: always
     ports:
       - 5432:5432
+    environment:
+      POSTGRES_DB: serverless
+      POSTGRES_USER: serverless
+      POSTGRES_PASSWORD: password
+    volumes:
+      - serverless:/var/lib/postgresql/data
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 5433:8080
+    environment:
+      ADMINER_DESIGN: 'dracula'
+
+volumes:
+  serverless:

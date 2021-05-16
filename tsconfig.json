@@ -12,7 +12,7 @@
     "paths": {
       "@functions/*": ["src/functions/*"],
       "@libs/*": ["src/libs/*"],
-      "@type": ["type"],
+      "~types": ["types"],
       "src/*": ["src/*"]
     },
     "resolveJsonModule": true,

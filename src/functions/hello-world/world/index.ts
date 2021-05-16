@@ -1,8 +1,8 @@
-import { FunctionDefinition } from '@type';
+import { FunctionDefinition } from '~types';
 import { handlerPath } from '@libs/handlerResolver';
 
 export default {
-  handler: `${handlerPath(__dirname)}/handler.main`,
+  handler: `${handlerPath(__dirname)}/handler.func`,
   events: [
     {
       http: {

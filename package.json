@@ -4,6 +4,7 @@
   "description": "A template for serverless APIs.",
   "main": "serverless.ts",
   "scripts": {
+    "dev": "sls offline start",
     "build": "sls package",
     "deploy": "sls deploy"
   },

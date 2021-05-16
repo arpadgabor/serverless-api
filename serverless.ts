@@ -12,9 +12,9 @@ const serverlessConfiguration: AWS = {
   variablesResolutionMode: '20210326',
 
   plugins: [
+    'serverless-esbuild',
     'serverless-domain-manager',
     'serverless-certificate-creator',
-    'serverless-esbuild',
     'serverless-offline'
   ],
 
@@ -27,7 +27,7 @@ const serverlessConfiguration: AWS = {
       hostedZoneNames: '${self:custom.baseDomain}.', // domain.com.
       region: '${self:provider.region}'
     },
-    
+
     customDomain: {
       region: '${self:provider.region}',
       domainName: '${self:custom.domain}',
@@ -43,6 +43,10 @@ const serverlessConfiguration: AWS = {
       minify: false,
       packager: 'npm',
       external: ['knex', 'pg'],
+      watch: {
+        pattern: ['./**/*.ts'],
+        ignore: ['.esbuild', 'dist', 'node_modules', '.serverless']
+      }
     },
   },
 
@@ -53,6 +57,7 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
+    endpointType: 'regional',
 
     // @ts-ignore
     region: '${opt:region, "eu-central-1"}',
