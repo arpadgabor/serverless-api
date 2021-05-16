@@ -9,11 +9,13 @@ const serverlessConfiguration: AWS = {
   unresolvedVariablesNotificationMode: 'error',
   configValidationMode: 'error',
   useDotenv: true,
+  variablesResolutionMode: '20210326',
 
   plugins: [
-    'serverless-esbuild',
     'serverless-domain-manager',
-    'serverless-certificate-creator'
+    'serverless-certificate-creator',
+    'serverless-esbuild',
+    'serverless-offline'
   ],
 
   custom: {
@@ -66,6 +68,11 @@ const serverlessConfiguration: AWS = {
 
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      DB_NAME: '${env:DB_NAME}',
+      DB_USER: '${env:DB_USER}',
+      DB_PASSWORD: '${env:DB_PASSWORD}',
+      DB_HOST: '${env:DB_HOST}',
+      DB_PORT: '${env:DB_PORT}',
     },
 
     lambdaHashingVersion: '20201221',

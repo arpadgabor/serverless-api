@@ -1,9 +1,6 @@
-import type { HTTPEvent } from '@libs/apiGateway';
 import { formatJSONResponse } from '@libs/apiGateway';
-import { middyfy } from '@libs/lambda';
+import { APIGatewayProxyEvent, Context } from 'aws-lambda';
 
-const find: HTTPEvent = async (event, context) => {
+export const find = async (event: APIGatewayProxyEvent, context: Context) => {
   return formatJSONResponse({ event, context });
 }
-
-export const main = middyfy(find);
