@@ -3,7 +3,7 @@ import { name } from './package.json'
 
 import functions from './src/functions'
 
-const serverlessConfiguration: AWS = {
+const config: AWS = {
   service: name,
   frameworkVersion: '2',
   unresolvedVariablesNotificationMode: 'error',
@@ -83,4 +83,4 @@ const serverlessConfiguration: AWS = {
   functions,
 }
 
-module.exports = serverlessConfiguration
+module.exports = config

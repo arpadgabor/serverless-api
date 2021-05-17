@@ -12,7 +12,6 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.5",
     "pg": "^8.6.0",
-    "serverless-offline": "^7.0.0",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
@@ -24,6 +23,7 @@
     "serverless-certificate-creator": "^1.5.3",
     "serverless-domain-manager": "^5.1.0",
     "serverless-esbuild": "^1.10.6",
+    "serverless-offline": "^7.0.0",
     "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.2.4"
