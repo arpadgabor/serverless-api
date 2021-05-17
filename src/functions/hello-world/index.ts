@@ -1,6 +1,8 @@
 import { FunctionDefinition } from '~types'
-import find from './world'
+import hello from './hello'
+import world from './world'
 
-export const world: Record<string, FunctionDefinition> = {
-  find
+export const helloWorld: Record<string, FunctionDefinition> = {
+  hello,
+  world
 }

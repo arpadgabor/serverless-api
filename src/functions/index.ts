@@ -1,5 +1,7 @@
-import { world } from './hello-world';
+import { helloWorld } from './hello-world';
+import authorizer from './auth'
 
 export default {
-  ...world,
+  authorizer,
+  ...helloWorld,
 }
