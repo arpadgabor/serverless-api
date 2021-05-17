@@ -1,6 +1,8 @@
 import { FunctionDefinition } from '~types';
 import { handlerPath } from '@libs/handlerResolver';
 
-export default {
+const handler: FunctionDefinition = {
   handler: `${handlerPath(__dirname)}/handler.func`,
-} as FunctionDefinition
+}
+
+export default handler

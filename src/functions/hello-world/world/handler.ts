@@ -1,9 +1,11 @@
+import { APIGatewayProxyEvent } from 'aws-lambda';
 import { formatJSONResponse } from '@libs/apiGateway';
-import { db } from '@libs/db';
-import { APIGatewayProxyEvent, Context } from 'aws-lambda';
+import { sign } from 'jsonwebtoken'
 
-export const func = async (event: APIGatewayProxyEvent, context: Context) => {
-  const result = await db.raw('select * from information_schema.key_column_usage')
+export const func = async (event: APIGatewayProxyEvent) => {
+  const user: string = event.queryStringParameters['user']
 
-  return formatJSONResponse({ result, event, context });
+  const token = sign({ scopes: ['*:*'] }, process.env.JWT_SECRET, { subject: user, expiresIn: '1d' })
+
+  return formatJSONResponse({ token });
 }

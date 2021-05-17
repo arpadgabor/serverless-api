@@ -42,11 +42,7 @@ const serverlessConfiguration: AWS = {
       bundle: true,
       minify: false,
       packager: 'npm',
-      external: ['knex', 'pg'],
-      watch: {
-        pattern: ['./**/*.ts'],
-        ignore: ['.esbuild', 'dist', 'node_modules', '.serverless']
-      }
+      external: ['knex', 'pg']
     },
   },
 
@@ -78,6 +74,7 @@ const serverlessConfiguration: AWS = {
       DB_PASSWORD: '${env:DB_PASSWORD}',
       DB_HOST: '${env:DB_HOST}',
       DB_PORT: '${env:DB_PORT}',
+      JWT_SECRET: '${env:JWT_SECRET}'
     },
 
     lambdaHashingVersion: '20201221',
