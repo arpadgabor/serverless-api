@@ -15,7 +15,7 @@ const serverlessConfiguration: AWS = {
     'serverless-esbuild',
     'serverless-domain-manager',
     'serverless-certificate-creator',
-    'serverless-offline'
+    'serverless-offline',
   ],
 
   custom: {
@@ -25,7 +25,7 @@ const serverlessConfiguration: AWS = {
     customCertificate: {
       certificateName: '*.${self:custom.baseDomain}', // *.domain.com
       hostedZoneNames: '${self:custom.baseDomain}.', // domain.com.
-      region: '${self:provider.region}'
+      region: '${self:provider.region}',
     },
 
     customDomain: {
@@ -42,7 +42,7 @@ const serverlessConfiguration: AWS = {
       bundle: true,
       minify: false,
       packager: 'npm',
-      external: ['knex', 'pg']
+      external: ['knex', 'pg'],
     },
   },
 
@@ -74,13 +74,13 @@ const serverlessConfiguration: AWS = {
       DB_PASSWORD: '${env:DB_PASSWORD}',
       DB_HOST: '${env:DB_HOST}',
       DB_PORT: '${env:DB_PORT}',
-      JWT_SECRET: '${env:JWT_SECRET}'
+      JWT_SECRET: '${env:JWT_SECRET}',
     },
 
     lambdaHashingVersion: '20201221',
   },
 
-  functions
+  functions,
 }
 
 module.exports = serverlessConfiguration

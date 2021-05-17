@@ -1,11 +1,16 @@
-import { AuthResponse, PolicyDocument, Statement } from 'aws-lambda';
+import { AuthResponse, PolicyDocument, Statement } from 'aws-lambda'
 
 export enum Permission {
   Allow = 'Allow',
   Deny = 'Deny',
 }
 
-export function generatePolicy(principalId: string, effect: Permission, resource: string, context?: any): AuthResponse {
+export function generatePolicy(
+  principalId: string,
+  effect: Permission,
+  resource: string,
+  context?: any
+): AuthResponse {
   const statement: Statement = {
     Action: 'execute-api:Invoke',
     Effect: effect,
@@ -26,5 +31,8 @@ export function generatePolicy(principalId: string, effect: Permission, resource
   return authResponse
 }
 
-export const allow = (arn: string,  principalId = 'user', ctx?: any) => generatePolicy(principalId, Permission.Allow, arn, ctx)
-export const deny = (arn: string, principalId = 'user',  ctx?: any) => generatePolicy(principalId, Permission.Deny, arn, ctx)
+export const allow = (arn: string, principalId = 'user', ctx?: any) =>
+  generatePolicy(principalId, Permission.Allow, arn, ctx)
+
+export const deny = (arn: string, principalId = 'user', ctx?: any) =>
+  generatePolicy(principalId, Permission.Deny, arn, ctx)
