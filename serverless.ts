@@ -1,7 +1,7 @@
 import type { AWS } from '@serverless/typescript'
 import { name } from './package.json'
 
-import functions from './src/functions'
+import functions from '~/functions'
 
 const config: AWS = {
   service: name,

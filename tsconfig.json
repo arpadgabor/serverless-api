@@ -13,9 +13,9 @@
       "@functions/*": ["src/functions/*"],
       "@libs/*": ["src/libs/*"],
       "~types": ["types"],
-      "src/*": ["src/*"]
+      "~/*": ["src/*"]
     },
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*.ts", "serverless.ts"],
   "exclude": [

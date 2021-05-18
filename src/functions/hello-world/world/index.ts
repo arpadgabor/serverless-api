@@ -1,5 +1,5 @@
-import { FunctionDefinition } from '~types';
-import { handlerPath } from '@libs/handlerResolver';
+import { FunctionDefinition } from '~types'
+import { handlerPath } from '@libs/utils'
 
 export default {
   handler: `${handlerPath(__dirname)}/handler.func`,
@@ -8,7 +8,7 @@ export default {
       http: {
         method: 'get',
         path: '/world',
-      }
-    }
-  ]
+      },
+    },
+  ],
 } as FunctionDefinition

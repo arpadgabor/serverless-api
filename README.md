@@ -33,8 +33,10 @@ project/
 │  │  │  ├─ util.ts
 │  ├─ lib/                      # Common logic, services, models, etc. for all functions.
 │  │  ├─ db.ts                  # DB connection with Knex (can be easily replaced).
-│  │  ├─ apiGateway.ts          # Utility to generate JSON response.
-│  │  ├─ handlerResolver.ts     # Utility to add lambda handlers in config relatively.
+│  │  ├─ utils/
+│  │  │  ├─ index.ts
+│  │  │  ├─ json-response.ts    # Utility to generate JSON response.
+│  │  │  ├─ handler-resolver.ts # Utility to add lambda handlers in config relatively.
 ├─ types/                       # Global type definitions
 ├─ serverless.ts                # Main configuration file
 ├─ docker-compose.yml           # Docker compose to spin a postgres database for easy local development
