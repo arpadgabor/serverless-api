@@ -19,7 +19,7 @@ const config: AWS = {
   ],
 
   custom: {
-    baseDomain: '${env:DOMAIN}',
+    baseDomain: '${env:DOMAIN, "domain.local"}',
     domain: '${self:provider.stage}.${self:custom.baseDomain}', // dev.domain.com
 
     customCertificate: {
@@ -69,12 +69,12 @@ const config: AWS = {
 
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      DB_NAME: '${env:DB_NAME}',
-      DB_USER: '${env:DB_USER}',
-      DB_PASSWORD: '${env:DB_PASSWORD}',
-      DB_HOST: '${env:DB_HOST}',
-      DB_PORT: '${env:DB_PORT}',
-      JWT_SECRET: '${env:JWT_SECRET}',
+      DB_NAME: '${env:DB_NAME, null}',
+      DB_USER: '${env:DB_USER, null}',
+      DB_PASSWORD: '${env:DB_PASSWORD, null}',
+      DB_HOST: '${env:DB_HOST, null}',
+      DB_PORT: '${env:DB_PORT, null}',
+      JWT_SECRET: '${env:JWT_SECRET, null}',
     },
 
     lambdaHashingVersion: '20201221',
