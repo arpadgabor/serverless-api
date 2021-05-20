@@ -112,3 +112,4 @@ Above is an example of a fallback that will resolve to a variable defined in SSM
 ## Todos
 
 - [ ] Swagger documentation (in progress) - still need to add a way to document the API and generate the swagger.json file automatically
+- [ ] Use layers for non-treeshake-able packages (e.g. `pg`, `knex`, `typeorm`, etc.). This would improve build times and possibly improve cold start times.
