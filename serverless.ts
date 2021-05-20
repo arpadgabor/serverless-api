@@ -20,7 +20,7 @@ const config: AWS = {
 
   custom: {
     baseDomain: '${env:DOMAIN, "domain.local"}',
-    domain: '${self:provider.stage}.${self:custom.baseDomain}', // dev.domain.com
+    domain: '${opt:domain, self:provider.stage}.${self:custom.baseDomain}', // dev.domain.com
 
     customCertificate: {
       certificateName: '*.${self:custom.baseDomain}', // *.domain.com
