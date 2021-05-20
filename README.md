@@ -11,6 +11,8 @@ A simple template for serverless API's using AWS, [Serverless Framework](https:/
 - **Automated certificates** (with [`serverless-certificate-creator`](https://github.com/schwamster/serverless-certificate-creator))
 - **Automated domains** based on stage (with [`serverless-domain-manager`](https://github.com/amplify-education/serverless-domain-manager))
 - **Prettier** for quick and easy formatting
+- **Swagger documentation** with [Redoc](https://github.com/Redocly/redoc) (Work in progress)
+- **CloudFormation helper functions** to keep your config clean (e.g. `Join()`, `Ref()`, etc.)
 
 ## Project structure
 
@@ -27,6 +29,15 @@ project/
 │  │  │  ├─ world/              # Example function to generate JWT's for authorizer.
 │  │  │  │  ├─ index.ts
 │  │  │  │  ├─ handler.ts
+│  │  ├─ docs/                  # Functions that return the Redoc website for API documentation (WIP)
+│  │  │  ├─ index.ts
+│  │  │  ├─ redoc/
+│  │  │  │  ├─ index.ts
+│  │  │  │  ├─ handler.ts
+│  │  │  │  ├─ html.ts
+│  │  │  ├─ json/
+│  │  │  │  ├─ index.ts
+│  │  │  │  ├─ handler.ts
 │  │  ├─ auth/                  # Example custom authorizer function
 │  │  │  ├─ index.ts
 │  │  │  ├─ handler.ts
@@ -38,6 +49,7 @@ project/
 │  │  │  ├─ json-response.ts    # Utility to generate JSON response.
 │  │  │  ├─ handler-resolver.ts # Utility to add lambda handlers in config relatively.
 ├─ types/                       # Global type definitions
+├─ utils/                       # Helper functions to help iterate faster
 ├─ serverless.ts                # Main configuration file
 ├─ docker-compose.yml           # Docker compose to spin a postgres database for easy local development
 ├─ tsconfig.json
@@ -94,4 +106,9 @@ Above is an example of a fallback that will resolve to a variable defined in SSM
 2. Make sure that your domain is managed by AWS and you have your base `DOMAIN` set in `.env`. Lambdas will be deployed to `{stage}.{domain}`.
 3. Generate your certificate with `npx sls create-cert`. This will generate a `*.{domain}` wildcard certificate.
 4. Generate your dev domain with `npx sls create_domain`. This will generate a `dev.${domain}` domain. For other stages you can use `npx sls create_domain --stage {stage}`
+   - **When deploying to production** use the `--domain <your_domain>` if you do not want your production domain to be prefixed with the stage.
 5. Make sure you have all the other services required set up in AWS (e.g. RDS) and that their respective connection options are setup in the enviroment (`config.provider.enviroment`). [More info about setting variables](https://www.serverless.com/framework/docs/providers/aws/guide/variables/).
+
+## Todos
+
+- [ ] Swagger documentation (in progress) - still need to add a way to document the API and generate the swagger.json file automatically

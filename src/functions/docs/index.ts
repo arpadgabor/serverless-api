@@ -1,4 +1,4 @@
 import json from './json'
-import doc from './page'
+import doc from './redoc'
 
 export const docs = { json, doc }

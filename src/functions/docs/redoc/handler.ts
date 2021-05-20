@@ -1,5 +1,5 @@
 import { APIGatewayProxyHandler } from 'aws-lambda'
-import { redoc } from './redoc'
+import { redoc } from './html'
 
 export const func: APIGatewayProxyHandler = async () => {
   return {
