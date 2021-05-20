@@ -2,8 +2,10 @@
   "compilerOptions": {
     "lib": ["ESNext"],
     "moduleResolution": "node",
-    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "noUnusedParameters": true,
+    "noUnusedLocals": true,
     "removeComments": true,
     "sourceMap": true,
     "target": "ES2020",
@@ -14,8 +16,7 @@
       "@libs/*": ["src/libs/*"],
       "~types": ["types"],
       "~/*": ["src/*"]
-    },
-    "resolveJsonModule": true
+    }
   },
   "include": ["src/**/*.ts", "serverless.ts"],
   "exclude": [

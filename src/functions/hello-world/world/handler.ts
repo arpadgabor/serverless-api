@@ -6,7 +6,10 @@ export const func = async (event: APIGatewayProxyEvent) => {
   const user: string = event.queryStringParameters?.['user']
 
   if (!user)
-    return response({ message: 'No user provided!', env: process.env }, 400)
+    return response(
+      { message: 'No user provided!', env: process.env, event },
+      400
+    )
 
   const token = sign({ scopes: ['*:*'] }, process.env.JWT_SECRET, {
     subject: user,
