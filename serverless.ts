@@ -20,7 +20,7 @@ const config: AWS = {
 
   custom: {
     baseDomain: '${env:DOMAIN, "domain.local"}',
-    domain: '${opt:domain, self:provider.stage}.${self:custom.baseDomain}', // dev.domain.com
+    domain: '${opt:domain, "${self:provider.stage}.${self:custom.baseDomain}"}', // dev.domain.com
 
     customCertificate: {
       certificateName: '*.${self:custom.baseDomain}', // *.domain.com
@@ -44,6 +44,9 @@ const config: AWS = {
       packager: 'npm',
       external: ['knex', 'pg'],
     },
+
+    rdsConfig:
+      '${ssm:/aws/reference/secretsmanager/rds-config-${self:service}infra-${self:provider.stage}}',
   },
 
   package: {
@@ -69,12 +72,14 @@ const config: AWS = {
 
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      DB_NAME: '${env:DB_NAME, null}',
-      DB_USER: '${env:DB_USER, null}',
-      DB_PASSWORD: '${env:DB_PASSWORD, null}',
-      DB_HOST: '${env:DB_HOST, null}',
-      DB_PORT: '${env:DB_PORT, null}',
-      JWT_SECRET: '${env:JWT_SECRET, null}',
+      DB_NAME: '${env:DB_NAME, self:custom.rdsConfig.DATABASE_NAME, null}',
+      DB_USER: '${env:DB_USER, self:custom.rdsConfig.DATABASE_USER, null}',
+      DB_PASSWORD:
+        '${env:DB_PASSWORD, self:custom.rdsConfig.DATABASE_PASS, null}',
+      DB_HOST:
+        '${env:DB_HOST, ssm:/rds-url-${self:service}infra-${self:provider.stage}}',
+      DB_PORT: '${env:DB_PORT, 5432}',
+      JWT_SECRET: '${env:JWT_SECRET, "dontdothistome"}',
     },
 
     lambdaHashingVersion: '20201221',

@@ -16,7 +16,7 @@ const db = knex({
   },
   log: {
     enableColors: true,
-  }
+  },
 })
 
 export { db }

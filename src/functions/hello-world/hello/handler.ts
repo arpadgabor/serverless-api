@@ -1,6 +1,6 @@
+import { APIGatewayProxyEvent, Context } from 'aws-lambda'
 import { response } from '@libs/utils'
 import { db } from '@libs/db'
-import { APIGatewayProxyEvent, Context } from 'aws-lambda'
 
 export const func = async (event: APIGatewayProxyEvent, context: Context) => {
   const result = await db.raw(

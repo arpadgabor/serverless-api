@@ -8,11 +8,6 @@ export default {
       http: {
         method: 'get',
         path: '/docs',
-        response: {
-          headers: {
-            'Content-Type': `text/html`,
-          },
-        },
       },
     },
   ],

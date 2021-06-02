@@ -40,7 +40,7 @@ export const GetAtt = (
   logicalNameOfResource: string,
   attributeName: string | typeof Ref
 ) => ({
-  'Fn:GetAtt': [logicalNameOfResource, attributeName],
+  'Fn::GetAtt': [logicalNameOfResource, attributeName],
 })
 
 /**
