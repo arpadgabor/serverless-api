@@ -5,7 +5,7 @@ A simple template for serverless API's using AWS, [Serverless Framework](https:/
 ## Features
 
 - **TypeScript**
-- **ESbuild** with individual packaging (with [`serverless-esbuild`](https://github.com/floydspace/serverless-esbuild))
+- **Webpack** with individual packaging (with [`serverless-bundle`](https://www.npmjs.com/package/serverless-bundle))
 - **Authorizer** function integration
 - **Offline development** with hot-reload (with [`serverless-offline`](https://github.com/dherault/serverless-offline))
 - **Automated certificates** (with [`serverless-certificate-creator`](https://github.com/schwamster/serverless-certificate-creator))
@@ -50,6 +50,7 @@ project/
 │  │  │  ├─ handler-resolver.ts # Utility to add lambda handlers in config relatively.
 ├─ types/                       # Global type definitions
 ├─ utils/                       # Helper functions to help iterate faster
+├─ infra/                       # Separate stacks, contains a custom stack for RDS setup.
 ├─ serverless.ts                # Main configuration file
 ├─ docker-compose.yml           # Docker compose to spin a postgres database for easy local development
 ├─ tsconfig.json
@@ -112,4 +113,4 @@ Above is an example of a fallback that will resolve to a variable defined in SSM
 ## Todos
 
 - [ ] Swagger documentation (in progress) - still need to add a way to document the API and generate the swagger.json file automatically
-- [ ] Use layers for non-treeshake-able packages (e.g. `pg`, `knex`, `typeorm`, etc.). This would improve build times and possibly improve cold start times.
+- [ ] Add documentation about the RDS setup
