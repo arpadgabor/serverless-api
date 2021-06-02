@@ -1,4 +1,5 @@
 import type { AWS } from '@serverless/typescript'
+import { isStage } from 'utils/serverless-helpers'
 import { name } from './package.json'
 
 import functions from '~/functions'
@@ -43,10 +44,17 @@ const config: AWS = {
       minify: false,
       packager: 'npm',
       external: ['knex', 'pg'],
+      metafile: true,
     },
 
-    rdsConfig:
-      '${ssm:/aws/reference/secretsmanager/rds-config-${self:service}infra-${self:provider.stage}}',
+    dbConfig: !isStage('local')
+      ? '${ssm:/aws/reference/secretsmanager/rds-config-${self:service}infra-${self:provider.stage}, null}'
+      : {
+          DATABASE_NAME: '${env:DB_NAME}',
+          DATABASE_USER: '${env:DB_USER}',
+          DATABASE_PASS: '${env:DB_PASSWORD}',
+          DATABASE_HOST: '${env:DB_HOST}',
+        },
   },
 
   package: {
@@ -72,12 +80,11 @@ const config: AWS = {
 
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      DB_NAME: '${env:DB_NAME, self:custom.rdsConfig.DATABASE_NAME, null}',
-      DB_USER: '${env:DB_USER, self:custom.rdsConfig.DATABASE_USER, null}',
-      DB_PASSWORD:
-        '${env:DB_PASSWORD, self:custom.rdsConfig.DATABASE_PASS, null}',
+      DB_NAME: '${self:custom.dbConfig.DATABASE_NAME}',
+      DB_USER: '${self:custom.dbConfig.DATABASE_USER}',
+      DB_PASSWORD: '${self:custom.dbConfig.DATABASE_PASS}',
       DB_HOST:
-        '${env:DB_HOST, ssm:/rds-url-${self:service}infra-${self:provider.stage}}',
+        '${self:custom.dbConfig.DATABASE_HOST, ssm:/rds-url-${self:service}infra-${self:provider.stage}}',
       DB_PORT: '${env:DB_PORT, 5432}',
       JWT_SECRET: '${env:JWT_SECRET, "dontdothistome"}',
     },

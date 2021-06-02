@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "sls offline start --stage local",
     "build": "sls package",
-    "deploy": "sls deploy"
+    "deploy": "sls deploy",
+    "deploy:infra": "sls deploy -c infra/serverless.ts"
   },
   "dependencies": {
     "jsonwebtoken": "^8.5.1",
@@ -22,7 +23,7 @@
     "serverless": "^2.43.1",
     "serverless-certificate-creator": "^1.5.3",
     "serverless-domain-manager": "^5.1.0",
-    "serverless-esbuild": "^1.10.6",
+    "serverless-esbuild": "^1.12.0",
     "serverless-offline": "^7.0.0",
     "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
