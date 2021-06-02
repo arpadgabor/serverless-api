@@ -13,7 +13,7 @@ const config: AWS = {
   variablesResolutionMode: '20210326',
 
   plugins: [
-    'serverless-esbuild',
+    'serverless-bundle',
     'serverless-domain-manager',
     'serverless-certificate-creator',
     'serverless-offline',
@@ -39,12 +39,14 @@ const config: AWS = {
       createRoute53Record: true,
     },
 
-    esbuild: {
-      bundle: true,
-      minify: false,
-      packager: 'npm',
-      external: ['knex', 'pg'],
-      metafile: true,
+    bundle: {
+      sourcemaps: true,
+      caching: true,
+      stats: true,
+      linting: false,
+      forceInclude: ['knex', 'pg'],
+      ignorePackages: ['pg-native'],
+      aliases: [{ '@libs': 'src/libs' }, { '~': 'src' }, { '~types': 'types' }],
     },
 
     dbConfig: !isStage('local')
